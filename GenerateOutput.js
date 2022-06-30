@@ -10,7 +10,7 @@ export class GenerateOutput{
     }
 
 
-    toString() {console.log(Date()+':'+this.randomString); this.memory += Date()+':'+this.randomString+'\n'; fs.appendFileSync('output.txt', Date()+':'+this.randomString+'\n');}
+    toString() {console.log(Date()+':'+this.randomString); this.memory += Date()+':'+this.randomString+'\n'; fs.appendFileSync('file/output.txt', Date()+':'+this.randomString+'\n');}
 
     toJSON() {return [Date(), this.randomString]}
 
