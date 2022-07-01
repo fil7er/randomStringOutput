@@ -3,12 +3,13 @@ kind: Service
 metadata:
   name: fil7er-output-generator-svc
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: fil7er-output-generator
   ports:
     - name: http
-      nodePort: 30081 # This is the port that is available outside. Value for nodePort can be between 30000-32767
       protocol: TCP
-      port: 1235 # This is a port that is available to the cluster, in this case it can be ~ anything
-      targetPort: 3000 # This is the target port
+      port: 80
+      targetPort: read-file-port
+  externalIPs:
+    - "1.2.4.120"
