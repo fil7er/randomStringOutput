@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fil7er-output-generator-ingress
+  namespace: string-output-namespace
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /pingpong
+        pathType: Prefix
+        backend:
+          service:
+            name: fil7er-nodejs-ping-pong-svc
+            port:
+              number: 80
+      - path: /output
+        pathType: Prefix
+        backend:
+          service:
+            name: fil7er-output-generator-svc
+            port:
+              number: 80
